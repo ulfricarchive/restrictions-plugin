@@ -8,6 +8,17 @@ public interface RestrictedActionService extends Service<RestrictedActionService
 		return Service.get(RestrictedActionService.class);
 	}
 
-	void doRestricted(Runnable runnable, RestrictedContext context);
+	public static void doRestricted(Runnable runnable, RestrictedContext context) {
+		RestrictedActionService service = get();
+
+		if (service == null) {
+			runnable.run();
+			return;
+		}
+
+		service.tryRestricted(runnable, context);
+	}
+
+	void tryRestricted(Runnable runnable, RestrictedContext context);
 
 }

@@ -15,7 +15,7 @@ public class AuditedRestrictedAccessService implements RestrictedActionService {
 	}
 
 	@Override
-	public void doRestricted(Runnable runnable, RestrictedContext context) {
+	public void tryRestricted(Runnable runnable, RestrictedContext context) {
 		logger.info("[audit] " + context.getAction() + " by " + context.getSender().getName());
 		runnable.run();
 	}
