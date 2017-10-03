@@ -2,5 +2,4 @@ name: Restrictions
 main: com.ulfric.plugin.restrictions.RestrictionsPlugin
 version: 1.0.0
 author: Ulfric LLC
-load: STARTUP
 depend: [Platform, Services]
