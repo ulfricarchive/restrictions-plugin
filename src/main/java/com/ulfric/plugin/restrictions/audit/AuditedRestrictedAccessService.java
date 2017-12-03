@@ -1,6 +1,7 @@
 package com.ulfric.plugin.restrictions.audit;
 
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 import com.ulfric.commons.bukkit.command.CommandSenderHelper;
@@ -28,6 +29,14 @@ public class AuditedRestrictedAccessService implements RestrictedActionService {
 		recordContextInUserHistory(context);
 
 		runnable.run();
+	}
+
+	@Override
+	public <T> T tryRestricted(Supplier<T> call, RestrictedContext context) {
+		logContext(context);
+		recordContextInUserHistory(context);
+
+		return call.get();
 	}
 
 	private void logContext(RestrictedContext context) {
