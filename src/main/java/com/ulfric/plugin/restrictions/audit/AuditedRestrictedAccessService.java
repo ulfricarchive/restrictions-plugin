@@ -25,18 +25,24 @@ public class AuditedRestrictedAccessService implements RestrictedActionService {
 
 	@Override
 	public void tryRestricted(Runnable runnable, RestrictedContext context) {
-		logContext(context);
-		recordContextInUserHistory(context);
+		takeRestriction(context);
 
 		runnable.run();
 	}
 
 	@Override
 	public <T> T tryRestricted(Supplier<T> call, RestrictedContext context) {
+		takeRestriction(context);
+
+		return call.get();
+	}
+
+	@Override
+	public boolean takeRestriction(RestrictedContext context) {
 		logContext(context);
 		recordContextInUserHistory(context);
 
-		return call.get();
+		return true;
 	}
 
 	private void logContext(RestrictedContext context) {

@@ -35,4 +35,6 @@ public interface RestrictedActionService extends Service<RestrictedActionService
 
 	<T> T tryRestricted(Supplier<T> call, RestrictedContext context);
 
+	boolean takeRestriction(RestrictedContext context);
+
 }
