@@ -16,7 +16,7 @@ public class RestrictionStage extends Stage<String> {
 
 	@EventHandler
 	public void on(CommandPreRunEvent event) {
-		String restriction = commandToContext.computeIfAbsent(event.getContext().getCommandType(), command -> {
+		String restriction = commandToContext.computeIfAbsent(event.getCommandType(), command -> {
 			Restricted restricted = Stereotypes.getFirst(command, Restricted.class);
 
 			if (restricted == null) {
