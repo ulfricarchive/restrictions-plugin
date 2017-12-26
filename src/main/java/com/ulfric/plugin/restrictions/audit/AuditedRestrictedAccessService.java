@@ -2,10 +2,10 @@ package com.ulfric.plugin.restrictions.audit;
 
 import java.util.UUID;
 import java.util.function.Supplier;
-import java.util.logging.Logger;
 
 import com.ulfric.commons.bukkit.command.CommandSenderHelper;
 import com.ulfric.dragoon.extension.inject.Inject;
+import com.ulfric.dragoon.logging.Log;
 import com.ulfric.dragoon.sinkro.Sinks;
 import com.ulfric.plugin.restrictions.RestrictedActionService;
 import com.ulfric.plugin.restrictions.RestrictedContext;
@@ -13,7 +13,7 @@ import com.ulfric.plugin.restrictions.RestrictedContext;
 public class AuditedRestrictedAccessService implements RestrictedActionService {
 
 	@Inject
-	private Logger logger;
+	private Log logger;
 
 	@Inject
 	private Sinks<Record> records;
