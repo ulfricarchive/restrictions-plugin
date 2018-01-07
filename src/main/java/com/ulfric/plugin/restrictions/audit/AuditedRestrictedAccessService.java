@@ -4,6 +4,7 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 import com.ulfric.commons.bukkit.command.CommandSenderHelper;
+import com.ulfric.dragoon.acrodb.Database;
 import com.ulfric.dragoon.extension.inject.Inject;
 import com.ulfric.dragoon.logging.Log;
 import com.ulfric.dragoon.sinkro.Sinks;
@@ -16,6 +17,7 @@ public class AuditedRestrictedAccessService implements RestrictedActionService {
 	private Log logger;
 
 	@Inject
+	@Database({ "restrictions", "records" })
 	private Sinks<Record> records;
 
 	@Override
